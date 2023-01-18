@@ -1,6 +1,6 @@
 
 #Task_1
-def get_visits(geo_logs, country):
+def get_visits(geo_logs: list, country: str):
     geo_logs_new = []
     for dic_visit in geo_logs:
         for visit in list(dic_visit.values()):
@@ -64,8 +64,6 @@ def list_to_dic(random_list):
         else:
             random_dict = {key_: random_dict}
     return random_dict
-
-
 
 if __name__ == '__main__':
     geo_logs = [
