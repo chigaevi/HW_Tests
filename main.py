@@ -103,4 +103,4 @@ if __name__ == '__main__':
     # print(max_sales(stats))
 
     random_list = ['2018-01-01', 'yandex', 'cpc', 100]
-    print(list_to_dic(random_list))
+    # print(list_to_dic(random_list))
