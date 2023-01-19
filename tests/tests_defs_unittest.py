@@ -1,6 +1,4 @@
-from main import get_unique_num
-from main import get_visits
-from main import list_to_dic
+from HW_task_1 import get_unique_num, get_visits, list_to_dic, max_sales, per_of_search_queries
 from unittest import TestCase, main
 
 
@@ -67,6 +65,49 @@ class list_to_dic_test(TestCase):
             list_to_dic(1)
             # list_to_dic([10, '10', 10])
         # print(e.exception.args)
+
+
+class max_sales_test(TestCase):
+
+    def test_equal(self):
+        stats = {'facebook': 55, 'yandex': 120, 'vk': 115, 'google': 99, 'email': 42, 'ok': 98}
+        self.assertEqual(max_sales(stats), 'yandex')
+
+    def test_wrong_type(self):
+        with self.assertRaises(TypeError) as e:
+            max_sales(1, 1)
+        # print(f'test_wrong_type def max_sales --> {e.exception.args[0]}')
+
+    def test_wrong_type_2(self):
+        with self.assertRaises(TypeError) as e:
+            max_sales([],[])
+        # print(f'test_wrong_type_2 def max_sales --> {e.exception.args[0]}')
+
+    def test_wrong_Attribute(self):
+        with self.assertRaises(AttributeError) as e:
+            max_sales(1)
+        # print(f'test_wrong_Attribute def max_sales --> {e.exception.args[0]}')
+
+    def test_args_not_none(self):
+        stats = {None: 55}
+        self.assertIsNone(max_sales(stats))
+
+
+class per_of_search_queries_test(TestCase):
+    def test_equal(self):
+        stats = ['слово', 'слово', 'слово']
+        self.assertEqual(per_of_search_queries(stats), {1:100})
+
+    def test_equal_(self):
+        stats = ['слово', 'два слова', 'это три слова']
+        self.assertEqual(per_of_search_queries(stats), {1: 33,2:33,3:33})
+
+    def test_wrong_type(self):
+        for arg in (1, 10, 1000):
+            with self.assertRaises(TypeError) as e:
+                per_of_search_queries(arg)
+            # print(f'test_wrong_type def per_of_search_queries --> {e.exception.args[0]}')
+
 
 
 

@@ -18,7 +18,7 @@ def get_unique_num(ids: dict):
 
 #Task_3
 
-def per_of_search_queries(queries):
+def per_of_search_queries(queries:list):
     len_queries = []
     distrib = []
     per_of_search_queries_list = {}
@@ -97,7 +97,7 @@ if __name__ == '__main__':
         'смотреть',
 
     ]
-    # print(per_of_search_queries(queries))
+    print(per_of_search_queries(queries))
 
     stats = {'facebook': 55, 'yandex': 120, 'vk': 115, 'google': 99, 'email': 42, 'ok': 98}
     # print(max_sales(stats))
