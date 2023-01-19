@@ -1,14 +1,4 @@
 import requests
-from pprint import pprint
-import copy
-import time
-
-# Проверим правильность работы Яндекс.Диск REST API. Написать тесты, проверяющий создание папки на Диске.
-# Используя библиотеку requests напишите unit-test на верный ответ и возможные отрицательные тесты на ответы с ошибкой
-#
-# Пример положительных тестов:
-# Код ответа соответствует 200.
-# Результат создания папки - папка появилась в списке файлов.
 
 def get_token_ya_ru():
     with open('ya_ru_token.txt', 'r') as file_obj:
@@ -50,9 +40,9 @@ class ya_disk():
         return response.status_code
 
 if __name__ == '__main__':
-    token = get_token_ya_ru()
-    creater = ya_disk(token)
-    creater.del_folder('new_folder')
-    # creater.create_folder('new_folder')
-    creater.getInfo('new_folder')
+    # token = get_token_ya_ru()
+    # creater = ya_disk(token)
+    # creater.del_folder('new_folder')
+    # # creater.create_folder('new_folder')
+    # creater.getInfo('new_folder')
 
