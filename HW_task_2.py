@@ -7,7 +7,6 @@ import time
 # Используя библиотеку requests напишите unit-test на верный ответ и возможные отрицательные тесты на ответы с ошибкой
 #
 # Пример положительных тестов:
-#
 # Код ответа соответствует 200.
 # Результат создания папки - папка появилась в списке файлов.
 
@@ -20,15 +19,6 @@ class ya_disk():
     def __init__(self, token):
         self.token = token
 
-    # def _get_upload_link(self, yadisk_file_path): # Функция получения временной ссылки на загрузку файла в каталог yadisk_file_path
-    #     upload_url = 'https://cloud-api.yandex.net/v1/disk/resources/upload'
-    #     headers = {'Authorization' : f'OAuth {self.token}'}
-    #     params = {'path': yadisk_file_path, 'overwrite': 'true'}
-    #     response = requests.get(upload_url, headers=headers, params=params)
-    #     if response.status_code == 200:
-    #         print('we got link successfully')
-    #     return response.json()
-
     def create_folder(self, path = 'temp_folder'):
         url = 'https://cloud-api.yandex.net/v1/disk/resources'
         headers = {'Authorization': f'OAuth {self.token}'}
@@ -38,7 +28,7 @@ class ya_disk():
             print(f'folder "{path}" created successfully')
         else:
             print(f'folder "{path}" not created')
-        return path
+        return response.status_code
 
     def del_folder(self, path):
         url = 'https://cloud-api.yandex.net/v1/disk/resources'
@@ -50,7 +40,7 @@ class ya_disk():
             print(f'folder "{path}" deleted successfully')
         else:
             print(f'folder "{path}" not deleted')
-        return path
+        return status
 
     def getInfo(self, path):
         url = 'https://cloud-api.yandex.net/v1/disk/resources'
@@ -64,5 +54,5 @@ if __name__ == '__main__':
     creater = ya_disk(token)
     creater.del_folder('new_folder')
     # creater.create_folder('new_folder')
-    print(creater.getInfo('new_folder'))
+    creater.getInfo('new_folder')
 
